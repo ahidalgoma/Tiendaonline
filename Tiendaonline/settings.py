@@ -21,7 +21,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'at#_7k*e&dxzd^a=-tj_(no0(!2i+h($%i(53^^xb@z_1qttui'
-import os from dotenv import load_dotenv
+import os 
+from dotenv import load_dotenv
 load_dotenv()
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -78,11 +79,11 @@ WSGI_APPLICATION = 'Tiendaonline.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.getenv(‘PG_DBNAME’),
-        'USER': os.getenv(‘PG_USER’), 
-        'PASSWORD': os.getenv(‘PG_PASSWORD’), 
-        'HOST': os.getenv(‘PG_HOST’),
-        'DATABASE_PORT': os.getenv(‘PG_PORT’),
+        'NAME': os.getenv('PG_DBNAME'),
+        'USER': os.getenv('PG_USER'), 
+        'PASSWORD': os.getenv('PG_PASSWORD'), 
+        'HOST': os.getenv('PG_HOST'),
+        'DATABASE_PORT': os.getenv('PG_PORT'),
     }
 }
 
@@ -109,7 +110,8 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+#LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-eu'
 
 TIME_ZONE = 'UTC'
 
@@ -124,3 +126,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+#Para enviar correos electrónicos
+EMAIL_BACKEND="django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST="smtp.gmail.com"
+EMAIL_USE_TLS=True
+EMAIL_PORT=587
+EMAIL_HOST_USER=os.getenv('CO_GMAIL')
+EMAIL_HOST_PASSWORD=os.getenv('PASS_GMAIL')
